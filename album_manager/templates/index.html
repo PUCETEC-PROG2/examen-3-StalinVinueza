@@ -2,6 +2,9 @@
 {% block title %}Baul Musical{% endblock title %}
 {% block content %}
     <h5 class="py-4 text-center">Bienvenido a Tu repositorio de música</h5>
+    <br>
+    <h5 class="text-center" aling>Artistas:</h5>
+    <br>
     <div class="card-group">
         {% for artist in artists %}
             <div class="card bg-light">
@@ -27,7 +30,9 @@
             </div>
         {% endfor %}
     </div>
-    <h5 class="">Álbumes:</h5>
+    <br>
+    <h5 class="text-center" aling>Álbumes:</h5>
+    <br>
     <div class="card-group">
         {% for album in albums %}
         <div class="card bg-light">
