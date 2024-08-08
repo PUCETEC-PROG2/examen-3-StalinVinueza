@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'album_manager',
         'HOST': 'localhost',
         'PORT': '5432',
-        'USER': 'stalin',
-        'PASSWORD': 'Romi19'
+        'USER': 'postgres',
+        'PASSWORD': 'pucetec'
     }
 }
 
