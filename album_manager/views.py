@@ -26,7 +26,6 @@ def artist(request, artist_id):
     return HttpResponse(template.render(context, request))
 
 def album(request, album_id):
-    
     album = Album.objects.get(id=album_id)
     template = loader.get_template('display_album.html')
     context = {

@@ -1,36 +1,22 @@
 {% extends "base.html" %}
-{% block title %}{{ album }}{% endblock title %}
+{% block title %}{{ album.title }}{% endblock title %}
 {% block content %}
 <div class="container mt-4">
-    
-    <p class="py-4 text-center">Has elegido el Pokémon: <strong>{{ album | capfirst }}</strong></p>
-    
+    <h2 class="text-center">{{ album.title }}</h2>
     <div class="card mx-auto" style="max-width: 500px;">
-   
-        <img src="{{ album.picture.url }}" class="card-img-top img-fluid" alt="Imagen de {{ album.name }}">
-        
+        <img src="{{ album.front_page.url }}" class="card-img-top img-fluid" alt="Imagen de {{ album.title }}">
         <div class="card-body">
-          
             <h3 class="py-4 text-center">Características:</h3>
-            
-            
             <ul class="list-group">
-                <li class="list-group-item list-group-item-action">Titulo: {{ album.tytle }}</li>
-                <li class="list-group-item list-group-item-action">Genero: {{ album.genre }} </li>
-                <li class="list-group-item list-group-item-action">Altura: {{ album.height }} </li>
-                {% if album.trainer %}
-                <li class="list-group-item list-group-item-action">Entrenador: {{ album.trainer.name}} {{ album.trainer.last_name }}</li>
-                
-                {% endif %}
+                <li class="list-group-item list-group-item-action">Titulo: {{ album.title }}</li>
+                <li class="list-group-item list-group-item-action">Genero: {{ album.genre }}</li>
+                <li class="list-group-item list-group-item-action">Año de lanzamiento: {{ album.release_year }}</li>
             </ul>
         </div>
     </div>
-
-  
     <div class="mt-4 d-flex justify-content-center">
-        <a href="{% url 'pokedex:index' %}" class="btn btn-primary">Regresar al inicio</a>
+        <a href="{% url 'index' %}" class="btn btn-primary">Regresar al inicio</a>
     </div>
 </div>
-<br>
-<br>
 {% endblock content %}
+
