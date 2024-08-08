@@ -6,7 +6,7 @@
     <div class="card mx-auto" style="max-width: 500px;">
         <img src="{{ album.front_page.url }}" class="card-img-top img-fluid" alt="Imagen de {{ album.title }}">
         <div class="card-body">
-            <h3 class="py-4 text-center">Características:</h3>
+            <h3 class="py-4 text-center">Album:</h3>
             <ul class="list-group">
                 <li class="list-group-item list-group-item-action">Titulo: {{ album.title }}</li>
                 <li class="list-group-item list-group-item-action">Genero: {{ album.genre }}</li>
@@ -14,9 +14,7 @@
             </ul>
         </div>
     </div>
-    <div class="mt-4 d-flex justify-content-center">
-        <a href="{% url 'index' %}" class="btn btn-primary">Regresar al inicio</a>
-    </div>
+   
 </div>
 {% endblock content %}
 

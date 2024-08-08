@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ artist.name }}{% endblock title %}
 {% block content %}
-    <h5 class="py-4 text-center">Has elegido al entrenador: <strong>{{ artist.name | capfirst }}</strong></h5>
+    <h5 class="py-4 text-center">Has elegido a:: <strong>{{ artist.name | capfirst }}</strong></h5>
     
     <div class="container-fluid" style="max-width: 1000px;">
         <div class="row g-0">
@@ -16,33 +16,31 @@
                     <ul class="list-group">
                         <li class="list-group-item">Nombre: {{ artist.name }}</li>
                         <li class="list-group-item">Apellido: {{ artist.last_name }}</li>
-                        <li class="list-group-item">Año de nacimiento: {{ artist.birth_date }}</li>
-                        <li class="list-group-item">Nivel: {{ artist.level }}</li>
+                        <li class="list-group-item">País: {{ artist.country }}</li>
+                        
                     </ul>
                 </div>
             </div>
                         
             <div class="col-md-4">
                 <div class="card-body">
-                    <h5 class="text-center">Pokémons entrenados:</h5>
-                    {% if artist.pokemon_set.all %}
+                    <h5 class="text-center">Albumes:</h5>
+                    {% if artist.album_set.all %}
                         <ol class="list-group">
-                            {% for pokemon in artist.pokemon_set.all %}
+                            {% for album in artist.album_set.all %}
                                 <li class="list-group-item text-center">
-                                    {{ pokemon.name }} - {{ pokemon.type }}
+                                    {{ artist.name }} 
                                 </li>
                             {% endfor %}
                         </ol>
                     {% else %}
-                        <p class="text-center">No tiene Pokémon asignados.</p>
+                        <p class="text-center">No tiene albums.</p>
                     {% endif %}
                 </div>
             </div>
         </div>
         
-        <div class="mt-4 d-flex justify-content-center">
-            <a href="{% url 'index' %}" class="btn btn-primary">Regresar al inicio</a>
-        </div>
+        
     </div>
     <br>
     <br>
