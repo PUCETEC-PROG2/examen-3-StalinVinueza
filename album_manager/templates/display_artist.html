@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% block title %}{{ artist }}{% endblock title %}
+{% block title %}{{ artist.name }}{% endblock title %}
 {% block content %}
-    <h5 class="py-4 text-center">Has elegido al entrenador: <strong>{{ artist | capfirst }}</strong></h5>
+    <h5 class="py-4 text-center">Has elegido al entrenador: <strong>{{ artist.name | capfirst }}</strong></h5>
     
     <div class="container-fluid" style="max-width: 1000px;">
         <div class="row g-0">
             
             <div class="col-md-4 d-flex justify-content-center align-items-center">
-                <img src="{{ artist.picture.url }}" class="img-fluid" alt="Imagen de {{ artist.name }}">
+                <img src="{{ artist.profile_picture.url }}" class="img-fluid" alt="Imagen de {{ artist.name }}">
             </div>
             
             <div class="col-md-4">
@@ -28,8 +28,6 @@
                     {% if artist.pokemon_set.all %}
                         <ol class="list-group">
                             {% for pokemon in artist.pokemon_set.all %}
-                        
-
                                 <li class="list-group-item text-center">
                                     {{ pokemon.name }} - {{ pokemon.type }}
                                 </li>
@@ -43,7 +41,7 @@
         </div>
         
         <div class="mt-4 d-flex justify-content-center">
-            <a href="{% url 'pokedex:index' %}" class="btn btn-primary">Regresar al inicio</a>
+            <a href="{% url 'index' %}" class="btn btn-primary">Regresar al inicio</a>
         </div>
     </div>
     <br>
