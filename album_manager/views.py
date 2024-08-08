@@ -12,10 +12,10 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 
 def index(request):
-    artist = Artist.objects.order_by('name') 
+    artists = Artist.objects.order_by('name') 
     albums = Album.objects.order_by('genre')
-    template = loader.get_template('index.html')
-    return render (request, 'index.html', {'artist':artist, 'albums':albums})
+    return render(request, 'index.html', {'artists': artists, 'albums': albums})
+
 
 def artist(request, artist_id):
     artist = Artist.objects.get(id=artist_id)
