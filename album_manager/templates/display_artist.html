@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ artist }}{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    
+    <p class="py-4 text-center">  <strong>{{ artist | capfirst }}</strong></p>
+    
+    <div class="card mx-auto" style="max-width: 500px;">
+   
+        <img src="{{ artist.picture.url }}" class="card-img-top img-fluid" alt="Imagen de {{ artist.name }}">
+        
+        <div class="card-body">
+          
+            <h3 class="py-4 text-center">Perfil:</h3>
+            
+            
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">Nombre: {{ artist.name }}</li>
+                <li class="list-group-item list-group-item-action">Apellido: {{ artist.last_name }} kg.</li>
+                <li class="list-group-item list-group-item-action">Altura: {{ artist.height }} cm.</li>
+                {% if artist.album %}
+                <li class="list-group-item list-group-item-action">Entrenador: {{ artist.trainer.name}} {{ artist.trainer.last_name }}</li>
+                
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+  
+    <div class="mt-4 d-flex justify-content-center">
+        <a href="{% url 'pokedex:index' %}" class="btn btn-primary">Regresar al inicio</a>
+    </div>
+</div>
+<br>
+<br>
+{% endblock content %}

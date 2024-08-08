@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Baul Musical{% endblock title %}
+{% block content %}
+    <h5 class="py-4 text-center">Bienvenido a Tu repositorio de música</h5>
+    <div class="card-group" >
+        {% for artist in artist %}
+            <div class="card bg-light ">
+
+                <img class="img-fluid "  src="{{ artist.picture.url }}" alt="" >
+                <div class="card-body">
+                    <h4 class="card-title">{{artist}}</h4>
+                    <p class="card-text">
+                        Entrenador: {{ artist.album }} <br>
+                        Peso: {{ artist.weight }}
+                    </p>
+                    <a href="artist/{{ artist.id }}" class="btn btn-secondary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    {% if user.is_authenticated %}
+                        <a href="edit_artist/{{ artist.id }}" class="btn btn-warning">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <a href="delete_artist/{{ artist.id }}" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h5 class="">Entrenadores:</h5>
+    <div class="card-group">
+        {% for album in albums %}
+        <div class="card bg-light">
+            <img src="{{ album.picture.url }}" alt="">
+            <div class="card-body">
+                <h4 class="card-title">{{album}}</h4>
+                <p class="card-text">
+                    Nombre: {{ album.name }} <br>
+                    Apellido: {{ album.last_name }}
+                </p>
+                <a href="album/{{ album.id }}" class="btn btn-secondary">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+                {% if user.is_authenticated %}
+                    <a href="edit_album/{{ album.id }}" class="btn btn-warning">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                    <a href="delete_album/{{ album.id }}" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

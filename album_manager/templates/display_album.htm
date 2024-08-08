@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ album }}{% endblock title %}
+{% block content %}
+<div class="container mt-4">
+    
+    <p class="py-4 text-center">Elegiste: <strong>{{ album | capfirst }}</strong></p>
+    
+    <div class="card mx-auto" style="max-width: 500px;">
+   
+        <img src="{{ album.front_page_images.url }}" class="card-img-top img-fluid" alt="Imagen de {{ album.name }}">
+        
+        <div class="card-body">
+          
+            <h3 class="py-4 text-center">Detalles:</h3>
+            
+            
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action">Titulo: {{ album.title }}</li>
+                <li class="list-group-item list-group-item-action">Año de Lanzamiento: {{ album.release_year }} kg.</li>
+                <li class="list-group-item list-group-item-action">Genero: {{ album.genre }} cm.</li>
+                {% if album.trainer %}
+                <li class="list-group-item list-group-item-action">Artista: {{ album.artist.name}} {{ album.artist.last_name }}</li>
+                
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+  
+    <div class="mt-4 d-flex justify-content-center">
+        <a href="{% url 'pokedex:index' %}" class="btn btn-primary">Regresar al inicio</a>
+    </div>
+</div>
+<br>
+<br>
+{% endblock content %}
