@@ -12,7 +12,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 
 def index(request):
-    artist = Artist.objects.order_by('country') 
+    artist = Artist.objects.order_by('name') 
     albums = Album.objects.order_by('genre')
     template = loader.get_template('index.html')
     return render (request, 'index.html', {'artist':artist, 'albums':albums})
@@ -78,7 +78,7 @@ def edit_album(request, id):
         form = AlbumForm(request.POST, request.FILES, instance=album)
         if form.is_valid():
             form.save()
-            return redirect(':album_managerindex')
+            return redirect(':album_manager:index')
     else:
         form = AlbumForm(instance=album)
     

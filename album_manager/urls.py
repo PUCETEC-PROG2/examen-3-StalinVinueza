@@ -1,4 +1,6 @@
 # Ingresar tus URLs de la app aquí
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from . import views
@@ -16,7 +18,6 @@ urlpatterns = [
     path("delete_album/<int:id>/", views.delete_album, name="delete_album"),
     path("login/", views.CustomLoginView.as_view(), name='login'),
     path("accounts/logout/", views.logout, name="logout"),
-
   
-
 ]
+

@@ -2,16 +2,15 @@
 {% block title %}Baul Musical{% endblock title %}
 {% block content %}
     <h5 class="py-4 text-center">Bienvenido a Tu repositorio de música</h5>
-    <div class="card-group" >
-        {% for artist in artist %}
-            <div class="card bg-light ">
-
-                <img class="img-fluid "  src="{{ artist.picture.url }}" alt="" >
+    <div class="card-group">
+        {% for artist in artists %}
+            <div class="card bg-light">
+                <img class="img-fluid" src="{{ artist.profile_picture.url }}" alt="{{ artist.name }}">
                 <div class="card-body">
-                    <h4 class="card-title">{{artist}}</h4>
+                    <h4 class="card-title">{{ artist.name }} {{ artist.last_name }}</h4>
                     <p class="card-text">
-                        Entrenador: {{ artist.album }} <br>
-                        Peso: {{ artist.weight }}
+                        Ciudad: {{ artist.country }} <br>
+                        Género: {{ artist.genre }}
                     </p>
                     <a href="artist/{{ artist.id }}" class="btn btn-secondary">
                         <i class="fa-solid fa-eye"></i>
@@ -28,16 +27,16 @@
             </div>
         {% endfor %}
     </div>
-    <h5 class="">Entrenadores:</h5>
+    <h5 class="">Álbumes:</h5>
     <div class="card-group">
         {% for album in albums %}
         <div class="card bg-light">
-            <img src="{{ album.picture.url }}" alt="">
+            <img src="{{ album.front_page.url }}" class="img-fluid" alt="{{ album.title }}">
             <div class="card-body">
-                <h4 class="card-title">{{album}}</h4>
+                <h4 class="card-title">{{ album.title }}</h4>
                 <p class="card-text">
-                    Nombre: {{ album.name }} <br>
-                    Apellido: {{ album.last_name }}
+                    Título: {{ album.title }} <br>
+                    Año de lanzamiento: {{ album.release_year }}
                 </p>
                 <a href="album/{{ album.id }}" class="btn btn-secondary">
                     <i class="fa-solid fa-eye"></i>

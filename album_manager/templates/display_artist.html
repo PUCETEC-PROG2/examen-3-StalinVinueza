@@ -1,36 +1,51 @@
 {% extends "base.html" %}
 {% block title %}{{ artist }}{% endblock title %}
 {% block content %}
-<div class="container mt-4">
+    <h5 class="py-4 text-center">Has elegido al entrenador: <strong>{{ artist | capfirst }}</strong></h5>
     
-    <p class="py-4 text-center">  <strong>{{ artist | capfirst }}</strong></p>
-    
-    <div class="card mx-auto" style="max-width: 500px;">
-   
-        <img src="{{ artist.picture.url }}" class="card-img-top img-fluid" alt="Imagen de {{ artist.name }}">
+    <div class="container-fluid" style="max-width: 1000px;">
+        <div class="row g-0">
+            
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <img src="{{ artist.picture.url }}" class="img-fluid" alt="Imagen de {{ artist.name }}">
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="text-center">Datos:</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">Nombre: {{ artist.name }}</li>
+                        <li class="list-group-item">Apellido: {{ artist.last_name }}</li>
+                        <li class="list-group-item">Año de nacimiento: {{ artist.birth_date }}</li>
+                        <li class="list-group-item">Nivel: {{ artist.level }}</li>
+                    </ul>
+                </div>
+            </div>
+                        
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="text-center">Pokémons entrenados:</h5>
+                    {% if artist.pokemon_set.all %}
+                        <ol class="list-group">
+                            {% for pokemon in artist.pokemon_set.all %}
+                        
+
+                                <li class="list-group-item text-center">
+                                    {{ pokemon.name }} - {{ pokemon.type }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% else %}
+                        <p class="text-center">No tiene Pokémon asignados.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
         
-        <div class="card-body">
-          
-            <h3 class="py-4 text-center">Perfil:</h3>
-            
-            
-            <ul class="list-group">
-                <li class="list-group-item list-group-item-action">Nombre: {{ artist.name }}</li>
-                <li class="list-group-item list-group-item-action">Apellido: {{ artist.last_name }} kg.</li>
-                <li class="list-group-item list-group-item-action">Altura: {{ artist.height }} cm.</li>
-                {% if artist.album %}
-                <li class="list-group-item list-group-item-action">Entrenador: {{ artist.trainer.name}} {{ artist.trainer.last_name }}</li>
-                
-                {% endif %}
-            </ul>
+        <div class="mt-4 d-flex justify-content-center">
+            <a href="{% url 'pokedex:index' %}" class="btn btn-primary">Regresar al inicio</a>
         </div>
     </div>
-
-  
-    <div class="mt-4 d-flex justify-content-center">
-        <a href="{% url 'pokedex:index' %}" class="btn btn-primary">Regresar al inicio</a>
-    </div>
-</div>
-<br>
-<br>
+    <br>
+    <br>
 {% endblock content %}

@@ -9,6 +9,7 @@ class ArtistForm(forms.ModelForm):
             'name' : forms.TextInput(attrs={'class' : 'form-control'},),
             'last_name' : forms.TextInput(attrs={'class' : 'form-control'},),
             'country' : forms.TextInput(attrs={'class' : 'form-control'},),
+            'profile_picture':forms.ClearableFileInput(attrs={'class' : 'form-control'}),
 
         }
 

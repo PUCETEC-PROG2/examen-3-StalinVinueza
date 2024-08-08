@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <div class="bg-primary text-white p-2 text-center mb-4">
-                <img class="img-fluid" src="{% static "logo.eps" %}" alt="">
+                <img class="img-fluid" src="{% static "logo.png" %}" alt="">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-">
                   <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,17 +22,17 @@
                         </li>
                         {% if user.is_authenticated %}
                           <li class="nav-item">
-                              <a class="nav-link" href="{% url "album_manager:add_artist" %}"><strong>Agregar Artista</strong></a>
+                              <a class="nav-link" href="{% url "album_manager:add_artist" %}"><strong>Ingresar Artista</strong></a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="{% url "album_manager:add_album" %}"><strong>Agregar Album</strong></a>
+                            <a class="nav-link" href="{% url "album_manager:add_album" %}"><strong>Ingresar Album</strong></a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="{% url "logout" %}"><strong>Salir</strong></a>
+                              <a class="nav-link" href="{% url "logout" %}"><strong>Sali</strong></a>
                           </li>
                         {% else %}
                           <li class="nav-item">
-                            <a class="nav-link" href="{% url "album_manager:login" %}"><strong>Ingresar</strong></a>
+                            <a class="nav-link" href="{% url "album_manager:login" %}"><strong>Iniciar Sesion</strong></a>
                           </li>
                         {% endif %}
                       </ul>

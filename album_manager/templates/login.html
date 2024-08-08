@@ -6,7 +6,7 @@
         <div class="col-md-6 bg-secondary p-4">
             <h3 class="mb-3"><strong>Iniciar Sesión</strong></h3>
             <hr class="bg-primary">
-            <form action="{% url "pokedex:login" %} " method="post">
+            <form action="{% url "album_manager:login" %} " method="post">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="username"><strong>Nombre de Usuario</strong></label>
